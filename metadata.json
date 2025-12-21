@@ -1,0 +1,7 @@
+{
+  "name": "ZHIAN (智安) | Global Press Freedom Initiative",
+  "description": "A multilingual initiative platform promoting global press freedom through community voting, blockchain-based governance, and educational games.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
