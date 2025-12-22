@@ -83,6 +83,9 @@ export interface Translation {
   gameNext: string;
   gameFinish: string;
   gameRestart: string;
+  gameStreak: string;
+  gameRank: string;
+  gameAiGenerating: string;
 
   // Footer
   footerQuote: string;
@@ -109,4 +112,11 @@ export interface NewsItem {
   title: string;
   isTrue: boolean;
   explanation: string;
+}
+
+export interface RankInfo {
+  name: string;
+  color: string;
+  bgColor: string;
+  shadowColor: string;
 }

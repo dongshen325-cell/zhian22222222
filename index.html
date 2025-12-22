@@ -12,10 +12,14 @@
         .serif-font { font-family: 'Noto Serif SC', serif; }
         
         @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pop-up { 0% { opacity: 0; transform: scale(0.8); } 70% { transform: scale(1.1); } 100% { opacity: 1; transform: scale(1.1); } }
         @keyframes float { 0% { transform: translateY(0) rotate(12deg); } 50% { transform: translateY(-15px) rotate(15deg); } 100% { transform: translateY(0) rotate(12deg); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         
-        .animate-fade-in { animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-fade-in { animation: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-pop-up { animation: pop-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-float { animation: float 10s ease-in-out infinite; }
+        .animate-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); background-size: 200% 100%; animation: shimmer 2s infinite linear; }
 
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
@@ -23,6 +27,9 @@
         /* Typography enhancements */
         .prose-archive { font-size: 1.125rem; line-height: 1.8; color: #334155; }
         .prose-archive h3 { font-size: 2.25rem; font-weight: 900; margin-top: 3rem; margin-bottom: 1.5rem; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
     </style>
 <script type="importmap">
 {
@@ -31,7 +38,8 @@
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
   }
 }
 </script>

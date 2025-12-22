@@ -7,7 +7,8 @@ import {
   RefreshCw, ArrowRight, Languages
 } from 'lucide-react';
 import { Language } from './types';
-import { TRANSLATIONS, LOGO_SRC } from './constants';
+import { TRANSLATIONS } from './constants';
+import AILogo from './components/AILogo';
 
 // Pages
 import Home from './pages/Home';
@@ -57,16 +58,14 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
               <div className="flex items-center gap-3">
-                <Link to="/" className="flex items-center gap-4 group">
-                  <div className="relative w-12 h-12 md:w-14 md:h-14">
-                    <div className="absolute inset-0 bg-blue-600/20 rounded-2xl blur-lg group-hover:blur-xl transition-all opacity-0 group-hover:opacity-100"></div>
-                    <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden border-2 border-slate-900/5 group-hover:scale-105 transition-transform shadow-2xl bg-white p-0.5">
-                      <img src={LOGO_SRC} alt="ZHIAN Logo" className="w-full h-full object-cover rounded-xl" />
-                    </div>
+                <Link to="/" className="flex items-center gap-2 group">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-blue-600/10 rounded-full blur-xl group-hover:blur-2xl transition-all opacity-0 group-hover:opacity-100"></div>
+                    <AILogo size={64} className="relative" />
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-lg md:text-xl font-black text-slate-900 leading-none tracking-tighter uppercase">ZHIAN {lang === 'zh' && '智安'}</span>
-                    <span className="text-[8px] md:text-[9px] text-blue-600 font-bold uppercase tracking-[0.2em] mt-1.5">Press Freedom</span>
+                  <div className="flex flex-col -ml-1">
+                    <span className="text-xl md:text-2xl font-black text-slate-900 leading-none tracking-tighter uppercase">ZHIAN {lang === 'zh' && '智安'}</span>
+                    <span className="text-[9px] text-blue-600 font-black uppercase tracking-[0.3em] mt-1">Press Freedom</span>
                   </div>
                 </Link>
               </div>
@@ -138,11 +137,10 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
               <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center gap-4 mb-6 group cursor-default">
-                  <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 group-hover:rotate-6 transition-transform bg-slate-900 p-0.5">
-                    <img src={LOGO_SRC} alt="ZHIAN" className="w-full h-full object-cover rounded-lg" />
-                  </div>
+                  <AILogo size={80} className="group-hover:rotate-6 transition-transform" transparent={true} />
                   <div className="flex flex-col">
-                    <span className="text-xl font-black text-white tracking-tighter uppercase">ZHIAN | {lang === 'zh' ? '智安' : 'Global'}</span>
+                    <span className="text-2xl font-black text-white tracking-tighter uppercase leading-none">ZHIAN</span>
+                    <span className="text-[10px] text-blue-400 font-black uppercase tracking-[0.4em] mt-2">{lang === 'zh' ? '全球智安基金会' : 'GLOBAL FOUNDATION'}</span>
                   </div>
                 </div>
                 <p className="max-w-md mb-8 leading-relaxed italic text-lg text-slate-300 font-light">{t.footerQuote}</p>
@@ -175,7 +173,7 @@ const App: React.FC = () => {
             <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em]">
               <p>© 2024 ZHIAN FOUNDATION | BREAKING THE CHAINS.</p>
               <div className="flex items-center gap-4 text-slate-600">
-                <span>v1.0-Demo</span>
+                <span>v2.0-Production-Ready</span>
                 <span>Mainnet-Mock</span>
               </div>
             </div>
