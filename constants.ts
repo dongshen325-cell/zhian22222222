@@ -63,7 +63,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     gameVerifierTitle: "逻辑拆解",
     gameVerifierDesc: "撕开精心编排的叙事，识别权威背后的逻辑陷阱。",
     gameTrapsTitle: "情绪陷阱",
-    gameTrapsDesc: "判断标题是在描述事实，还是在煽动你的肾上腺素。",
+    gameTrapsDesc: "判断标题是在描述事实，还是在煽动你的情绪。",
     gameManipulationTitle: "真相还原",
     gameManipulationDesc: "模拟新闻审查：从涂黑的段落中，推理出被隐藏的关键证据。",
     gameCorrect: "洞察如炬！",
@@ -126,10 +126,14 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     votingTitle: "Joint Consensus",
     votingSub: "Only those who care have the power to vote.",
     votingThreshold: "Threshold: ZA Balance",
-    votingPurpose: "Intent",
-    votingPurposeDesc: "Funding heroes overlooked by mainstream media in regional conflicts.",
-    votingStatus: "Live Status",
-    votingWalletStatus: "No wallet detected. Connect first.",
+    // Fix: Added missing votingPurpose property
+    votingPurpose: "Governance Intent",
+    // Fix: Added missing votingPurposeDesc property
+    votingPurposeDesc: "We aim to use voting to fund heroes who are forgotten by mainstream media but stand firm for truth in local conflicts.",
+    // Fix: Added missing votingStatus property
+    votingStatus: "Governance Status",
+    // Fix: Added missing votingWalletStatus property
+    votingWalletStatus: "No identity detected. Please connect your wallet first.",
     votingPower: "Governance Power",
     votingQualified: "You can vote",
     votingInsufficient: "Insufficient ZA (500 req)",
@@ -159,42 +163,26 @@ export const TRANSLATIONS: Record<Language, Translation> = {
 };
 
 export const RANKS: Record<number, RankInfo> = {
-  0: { name: "见习 (Intern)", color: "text-slate-400", bgColor: "bg-slate-100", shadowColor: "shadow-slate-200" },
-  10: { name: "初级 (Junior)", color: "text-blue-500", bgColor: "bg-blue-100", shadowColor: "shadow-blue-200" },
-  20: { name: "记者 (Reporter)", color: "text-indigo-600", bgColor: "bg-indigo-100", shadowColor: "shadow-indigo-300" },
-  40: { name: "资深 (Senior)", color: "text-emerald-600", bgColor: "bg-emerald-100", shadowColor: "shadow-emerald-300" },
-  60: { name: "首席 (Chief)", color: "text-purple-600", bgColor: "bg-purple-100", shadowColor: "shadow-purple-400" },
-  80: { name: "传奇 (Legend)", color: "text-amber-600", bgColor: "bg-amber-100", shadowColor: "shadow-amber-400" },
-  100: { name: "持灯者 (Guardian)", color: "text-red-600", bgColor: "bg-red-100", shadowColor: "shadow-red-500" }
+  0: { name: "线索猎人", color: "text-slate-400", bgColor: "bg-slate-100", shadowColor: "shadow-slate-200" },
+  12: { name: "暗室探针", color: "text-blue-500", bgColor: "bg-blue-100", shadowColor: "shadow-blue-200" },
+  25: { name: "破障者", color: "text-indigo-600", bgColor: "bg-indigo-100", shadowColor: "shadow-indigo-300" },
+  37: { name: "伏击之眼", color: "text-emerald-600", bgColor: "bg-emerald-100", shadowColor: "shadow-emerald-300" },
+  50: { name: "破壁人", color: "text-purple-600", bgColor: "bg-purple-100", shadowColor: "shadow-purple-400" },
+  62: { name: "无影之刃", color: "text-amber-600", bgColor: "bg-amber-100", shadowColor: "shadow-amber-400" },
+  75: { name: "肃正之裁", color: "text-red-600", bgColor: "bg-red-100", shadowColor: "shadow-red-500" },
+  87: { name: "不朽信标", color: "text-white", bgColor: "bg-slate-900", shadowColor: "shadow-blue-500" }
 };
 
 export const RUNNER_OBSTACLES = {
   zh: {
-    top: ["领导施压", "撤稿指令", "利益交换", "虚假通稿", "流量陷阱"],
-    bottom: ["死亡威胁", "法律恐吓", "暴力袭击", "造谣抹黑", "账户封禁"]
+    top: ["信息干扰", "强制撤稿", "匿名恐吓", "流量锁死", "逻辑死循环"],
+    bottom: ["断网威胁", "物理干扰", "水军围攻", "技术故障", "法律陷阱"]
   },
   en: {
-    top: ["Editor Pressure", "Kill Order", "Conflict of Interest", "Fake Release", "Traffic Trap"],
-    bottom: ["Death Threat", "Legal Trap", "Physical Assault", "Defamation", "Account Ban"]
+    top: ["Signal Jam", "Kill Order", "Threat", "Locked Traffic", "Logic Loop"],
+    bottom: ["Shutdown", "Assault", "Bot Attack", "Glitched Link", "Legal Trap"]
   }
 };
 
-export const BRAND_LOGO_PROMPT = "Ultra-high resolution minimalist vector logo. A white peace dove snapping heavy metallic chains. Minimalist aesthetic, sapphire blue and silver palette, solid white background.";
-export const HERO_GENERATION_PROMPT = (lang: string) => `Generate 20 investigative journalist profiles. Language: ${lang}. Output JSON only.`;
-export const LOGO_CACHE_KEY = 'zhian_logo_v3';
+// Removed obsolete AI generation keys
 export const HEROES_CACHE_KEY = 'zhian_heroes_v2';
-
-export const getMockNews = (lang: Language): NewsItem[] => [
-  { 
-    id: 1, 
-    title: lang === 'zh' ? "官方称由于‘技术故障’封锁社交媒体。" : "Official claims social media blocked due to 'Glitch'.", 
-    isTrue: false, 
-    explanation: lang === 'zh' ? "此类手段常用于压制现场实时信息。" : "Commonly used to suppress live info." 
-  },
-  { 
-    id: 2, 
-    title: lang === 'zh' ? "过去10年，全球超过800名记者殉职。" : "Over 800 journalists killed in last decade.", 
-    isTrue: true, 
-    explanation: "Data from UNESCO confirms this." 
-  }
-];
