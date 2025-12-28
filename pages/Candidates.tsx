@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
-import { TRANSLATIONS, HEROES_CACHE_KEY } from '../constants';
+import { TRANSLATIONS } from '../constants';
 import { HEROES_DB } from '../gameData';
 import { Language, Candidate } from '../types';
 // Added ShieldCheck to the imports
@@ -101,6 +100,7 @@ const Candidates: React.FC<{ lang: Language }> = ({ lang }) => {
               disabled={isRotating}
               className="flex items-center gap-3 px-8 py-5 bg-slate-900 text-white rounded-3xl shadow-2xl hover:bg-blue-600 transition-all active:scale-95 disabled:opacity-50 group font-black whitespace-nowrap"
               title="轮换公示英雄"
+              aria-label={lang === 'zh' ? '轮换公示英雄列表' : 'Rotate current public hero list'}
             >
               <RefreshCcw size={24} className={isRotating ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-700'} />
               {lang === 'zh' ? '轮换公示' : 'Rotate Pool'}

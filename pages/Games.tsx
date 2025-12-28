@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { GoogleGenAI, Type } from "@google/genai";
 import { TRANSLATIONS, RANKS, RUNNER_OBSTACLES } from '../constants';
@@ -150,7 +149,7 @@ const Games: React.FC<{ lang: Language }> = ({ lang }) => {
     }
   };
 
-  const currentTitle = getTitleByCorrectCount(totalCorrect);
+  const currentTitle = getTitleByCorrectCount(totalCorrect, lang);
 
   const gameRef = useRef<HTMLDivElement>(null);
   const obstaclesRef = useRef<HTMLDivElement>(null);
@@ -338,9 +337,9 @@ const Games: React.FC<{ lang: Language }> = ({ lang }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {[
             { id: 'runner', title: '真相之跃', desc: '扮演王牌信使，衔笔穿梭在信息铁幕中。', icon: <Flame size={32} />, color: 'blue' },
-            { id: 'verifier', title: '逻辑拆解', desc: '识别权威话术中的逻辑陷阱与谎言。', icon: <Brain size={32} />, color: 'indigo' },
-            { id: 'traps', title: '情绪陷阱', desc: '警惕针对性情感操纵，保持客观洞察。', icon: <Target size={32} />, color: 'amber' },
-            { id: 'manipulation', title: '真相还原', desc: '从重重审查的档案中，拼凑出历史原貌。', icon: <MessageSquare size={32} />, color: 'slate' }
+            { id: 'verifier', title: '逻辑拆解', desc: '撕开精心编排的叙事，识别权威背后的逻辑陷阱。', icon: <Brain size={32} />, color: 'indigo' },
+            { id: 'traps', title: '情绪陷阱', desc: '判断标题是在描述事实，还是在煽动你的情绪。', icon: <Target size={32} />, color: 'amber' },
+            { id: 'manipulation', title: '真相还原', desc: '模拟新闻审查：从涂黑的段落中，推理出被隐藏的关键证据。', icon: <MessageSquare size={32} />, color: 'slate' }
           ].map((item) => (
             <button key={item.id} onClick={() => handleModeSelect(item.id as GameMode)} className="group bg-white p-8 md:p-12 rounded-[3.5rem] border border-slate-100 shadow-xl hover:shadow-4xl transition-all flex flex-col text-left active:scale-95">
               <div className={`w-16 h-16 md:w-20 md:h-20 bg-${item.color}-50 text-${item.color}-600 rounded-[1.5rem] md:rounded-[2.5rem] flex items-center justify-center mb-8 group-hover:bg-${item.color}-600 group-hover:text-white transition-all shadow-sm`}>{item.icon}</div>
