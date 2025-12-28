@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { 
@@ -84,6 +83,7 @@ const App: React.FC = () => {
                   onClick={toggleLanguage}
                   className="p-3 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all mr-2 flex items-center gap-2"
                   title="Switch Language"
+                  aria-label={lang === 'zh' ? '切换语言至英文' : 'Switch language to Chinese'}
                 >
                   <Languages size={20} />
                   <span className="text-xs font-black">{lang === 'zh' ? 'EN' : '中文'}</span>
@@ -99,10 +99,10 @@ const App: React.FC = () => {
               </div>
 
               <div className="lg:hidden flex items-center gap-4">
-                <button onClick={toggleLanguage} className="p-2 text-slate-500 bg-slate-100 rounded-xl font-bold text-xs uppercase">
+                <button onClick={toggleLanguage} className="p-2 text-slate-500 bg-slate-100 rounded-xl font-bold text-xs uppercase" aria-label={lang === 'zh' ? '切换语言至英文' : 'Switch language to Chinese'}>
                   {lang === 'zh' ? 'EN' : '中文'}
                 </button>
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-3 text-slate-900 bg-slate-100 rounded-2xl">
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-3 text-slate-900 bg-slate-100 rounded-2xl" aria-label={isMenuOpen ? '关闭菜单' : '打开菜单'}>
                   {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
@@ -181,17 +181,24 @@ const App: React.FC = () => {
         </footer>
 
         {showWalletModal && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+          <div 
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="wallet-modal-title"
+            onKeyDown={(e) => { if (e.key === 'Escape') setShowWalletModal(false); }}
+          >
             <div className="bg-white w-full max-w-md rounded-[2rem] p-8 shadow-4xl animate-fade-in">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-xl font-black text-slate-900 serif-font uppercase tracking-tight">Connect Wallet</h2>
-                <button onClick={() => setShowWalletModal(false)} className="p-2 hover:bg-slate-100 rounded-xl transition-all"><X size={20} /></button>
+                <h2 id="wallet-modal-title" className="text-xl font-black text-slate-900 serif-font uppercase tracking-tight">Connect Wallet</h2>
+                <button onClick={() => setShowWalletModal(false)} className="p-2 hover:bg-slate-100 rounded-xl transition-all" aria-label="关闭连接钱包弹窗"><X size={20} /></button>
               </div>
               <div className="space-y-3">
                 <button 
                   onClick={simulateConnection}
                   disabled={isConnecting}
                   className="w-full p-4 bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 rounded-2xl transition-all flex items-center justify-between group disabled:opacity-50"
+                  aria-label="连接 MetaMask 钱包"
                 >
                   <div className="flex items-center gap-3">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Logo.svg" className="w-8 h-8" alt="MetaMask" />

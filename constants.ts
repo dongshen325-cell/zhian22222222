@@ -1,4 +1,3 @@
-
 import { Language, Translation, Candidate, NewsItem, RankInfo } from './types';
 
 export const TRANSLATIONS: Record<Language, Translation> = {
@@ -126,13 +125,9 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     votingTitle: "Joint Consensus",
     votingSub: "Only those who care have the power to vote.",
     votingThreshold: "Threshold: ZA Balance",
-    // Fix: Added missing votingPurpose property
     votingPurpose: "Governance Intent",
-    // Fix: Added missing votingPurposeDesc property
     votingPurposeDesc: "We aim to use voting to fund heroes who are forgotten by mainstream media but stand firm for truth in local conflicts.",
-    // Fix: Added missing votingStatus property
     votingStatus: "Governance Status",
-    // Fix: Added missing votingWalletStatus property
     votingWalletStatus: "No identity detected. Please connect your wallet first.",
     votingPower: "Governance Power",
     votingQualified: "You can vote",

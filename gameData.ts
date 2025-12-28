@@ -1,3 +1,4 @@
+import { Language } from './types'; // Import Language type
 
 export interface QuizQuestion {
   id: number;
@@ -20,22 +21,37 @@ export interface Candidate {
   fullArchive: string;
 }
 
-export const REPORTER_TITLES = [
-  "见习记者 (Apprentice)", 
-  "助理记者 (Assistant)", 
-  "独立记者 (Independent)", 
-  "骨干记者 (Core)", 
-  "首席记者 (Chief)", 
-  "高级记者 (Senior)", 
-  "资深记者 (Veteran)", 
-  "专家记者 (Expert)", 
-  "王牌记者 (Ace)", 
-  "传奇记者 (Legendary)"
-];
+export const REPORTER_TITLES: Record<Language, string[]> = {
+  zh: [
+    "见习记者 (Apprentice)",
+    "助理记者 (Assistant)",
+    "独立记者 (Independent)",
+    "骨干记者 (Core)",
+    "首席记者 (Chief)",
+    "高级记者 (Senior)",
+    "资深记者 (Veteran)",
+    "专家记者 (Expert)",
+    "王牌记者 (Ace)",
+    "传奇记者 (Legendary)"
+  ],
+  en: [
+    "Apprentice Reporter",
+    "Assistant Reporter",
+    "Independent Reporter",
+    "Core Reporter",
+    "Chief Reporter",
+    "Senior Reporter",
+    "Veteran Reporter",
+    "Expert Reporter",
+    "Ace Reporter",
+    "Legendary Reporter"
+  ]
+};
 
-export const getTitleByCorrectCount = (count: number): string => {
-  const index = Math.min(Math.floor(count / 15), REPORTER_TITLES.length - 1);
-  return REPORTER_TITLES[index];
+export const getTitleByCorrectCount = (count: number, lang: Language): string => {
+  const titles = REPORTER_TITLES[lang];
+  const index = Math.min(Math.floor(count / 15), titles.length - 1);
+  return titles[index];
 };
 
 export const HEROES_DB: Candidate[] = [
